@@ -1,6 +1,6 @@
 # Use Backblaze B2 for Pastel Storage
 
-This script is designed to configure and mount a Backblaze B2 bucket as a local filesystem on an Ubuntu machine. It also moves a specific Pastel data file to the Backblaze B2 bucket and creates a symbolic link to ensure transparent access to the file.
+This script is designed to configure and mount a Backblaze B2 bucket as a local filesystem on an Ubuntu machine. It also moves a specific Pastel data file to the Backblaze B2 bucket and creates a symbolic link to ensure transparent access to the file. This allows Pastel Supernode operators to easily scale their storage without spending a fortune on a huge SSD for their VPS instance.
 
 ## Screenshot of Script
 
