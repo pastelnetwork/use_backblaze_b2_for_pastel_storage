@@ -74,7 +74,7 @@ The script employs several performance tweaks to facilitate efficient access to 
 
 These optimizations are tailored to address the specific challenges of accessing an SQLite database hosted on remote cloud storage. They aim to minimize the impact of network latency, improve concurrent access, and ensure that the remote file is accessed transparently by the application. Adjustments to these settings might be necessary based on the actual workload, network conditions, and available local storage.
 
-### Utilizing Local Backblaze Region URL with Cloudflare for Enhanced Performance
+## Utilizing Local Backblaze Region URL with Cloudflare for Enhanced Performance
 
 Backblaze B2 has different region URLs corresponding to the physical locations of their data centers. By using the URL of the region closest to your location, and leveraging Cloudflare's network, you can dramatically enhance the speed and reliability of accessing your remote SQLite database.
 
