@@ -40,7 +40,7 @@ This script is designed to configure and mount a Backblaze B2 bucket as a local 
 
 - Ensure that the specified bucket exists in your Backblaze B2 account.
 - Ensure that the Pastel data file exists at the specified location before running the script.
-- Handle the script with care, as it contains sensitive credentials.
+- You can either modify the script to directly include your Backblaze credentials, or store them in the environment variables `B2_APP_KEY_ID` and `B2_APP_KEY` (strongly recommended), in which case you can run the script without modification.
 - The optimized settings in the script are tailored to reduce network latency, enhance caching, and improve concurrent access. Adjustments might be necessary based on actual workload and network conditions.
 
 ## Performance Optimizations and Rationale
