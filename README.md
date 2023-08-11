@@ -74,6 +74,41 @@ The script employs several performance tweaks to facilitate efficient access to 
 
 These optimizations are tailored to address the specific challenges of accessing an SQLite database hosted on remote cloud storage. They aim to minimize the impact of network latency, improve concurrent access, and ensure that the remote file is accessed transparently by the application. Adjustments to these settings might be necessary based on the actual workload, network conditions, and available local storage.
 
+### Utilizing Local Backblaze Region URL with Cloudflare for Enhanced Performance
+
+Backblaze B2 has different region URLs corresponding to the physical locations of their data centers. By using the URL of the region closest to your location, and leveraging Cloudflare's network, you can dramatically enhance the speed and reliability of accessing your remote SQLite database.
+
+Here's a step-by-step guide to help you set up and configure this:
+
+1. **Determine Your Local Backblaze Region URL**: Log into your Backblaze B2 dashboard and browse your files. Click on the metadata for any file, and you'll find a share link that contains the local region URL. For someone on the US east coast, for example, the region URL might be `f002.backblazeb2.com`.
+
+2. **Purchase a Domain**: Choose a domain registrar that offers affordable domains (e.g., Namecheap, GoDaddy, Google Domains) and purchase a domain that suits your needs.
+
+3. **Create a Cloudflare Account**: Sign up for a free account on [Cloudflare](https://www.cloudflare.com/).
+
+4. **Add Your Domain to Cloudflare**: 
+   - Click on "Add a Site" in your Cloudflare dashboard.
+   - Enter your domain name and click "Add Site."
+   - Select the Free plan, and follow the instructions to update your domain's nameservers with the ones provided by Cloudflare.
+
+5. **Configure Cloudflare for Backblaze B2**: 
+   - Go back to Cloudflare, click on "DNS," and add a CNAME record with your domain pointing to the Backblaze B2 local region URL.
+   - Make sure the proxy status (orange cloud) is enabled for this CNAME record.
+
+6. **Update the Script with Your Domain**: Modify the rclone mount command in the script to use your domain with the `--b2-endpoint` option. For example:
+
+   ```bash
+   rclone mount myb2bucket:"$BUCKET_NAME" "$MOUNT_POINT" \
+     --b2-endpoint https://yourdomain.com \
+     ...
+   ```
+
+7. **Verify the Setup**: Test the connection to ensure that everything is working as expected.
+
+By following these steps, you'll take advantage of the local Backblaze B2 region and Cloudflare's global network. This setup can dramatically enhance the speed and reliability of accessing your remote SQLite database, especially when network latency is a concern.
+
+Keep in mind that while Cloudflare's services are often free, there may be costs associated with purchasing a domain and other specific configurations. Always consult the respective documentation and support channels of the services you're using for the most accurate and up-to-date information.
+
 ## Screenshot of Script
 
 ![Screenshot](screenshot.svg)
