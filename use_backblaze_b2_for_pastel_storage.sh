@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Define Backblaze B2 credentials and bucket name
-B2_ACCOUNT_ID=''
+B2_APP_KEY_ID=''
 B2_APP_KEY='' 
-BUCKET_NAME='Backblaze-share-drive' # Replace with your actual bucket name
+BUCKET_NAME='Backblaze-share-drive' # Replace with your actual bucket name (recommended to enable encryption in the bucket)
 MOUNT_POINT='/home/ubuntu/Backblaze'
 
 # Check if rclone is installed; if not, install it
@@ -13,7 +13,7 @@ if ! command -v rclone &> /dev/null; then
 fi
 
 # Configure rclone with B2 information
-rclone config create myb2bucket b2 account "$B2_ACCOUNT_ID" key "$B2_APP_KEY"
+rclone config create myb2bucket b2 account "$B2_APP_KEY_ID" key "$B2_APP_KEY"
 
 # Create mount point if it doesn't exist
 mkdir -p "$MOUNT_POINT"
