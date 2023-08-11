@@ -4,7 +4,7 @@ This script is designed to configure and mount a Backblaze B2 bucket as a local 
 
 ## Screenshot of Script
 
-![Screenshot](use_backblaze_b2_for_pastel_storage_screenshot.svg)
+![Screenshot](screenshot.svg)
 
 ## Prerequisites
 
